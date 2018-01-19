@@ -1,0 +1,15 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.4.0",
+    "gulp-util": "^3.0.8",
+    "webpack-stream": "^4.0.0"
+  }
+}
