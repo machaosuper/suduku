@@ -6,6 +6,9 @@ class Generator {
     generate () {
 
         this.matrix = Toolkit.matrix.makeMatrix();
+        this.orders = Toolkit.matrix.makeMatrix()
+            .map(row => row.map((v, i) => i))
+            .map(row => Toolkit.matrix.shuffle(row));
 
         for (let n = 1; n <= 9; n++) {
             this.fillNumber(n);
@@ -23,15 +26,18 @@ class Generator {
         }
 
         const row = this.matrix[rowIndex];
+        // 随机选着列
+        const orders = this.orders[rowIndex];
+        debugger;
         for (let i; i < 9; i++) {
-            const colIndex = i;
+            const colIndex = orders[i];
             // 如果这个位置已经有值，跳过
             if (row[colIndex]) {
                 continue;
             }
 
             // 检查这个位置是否可以填 n
-            if (!Toolkit.matrix.checkFillable()) {
+            if (!Toolkit.matrix.checkFillable(this.matrix, n, rowIndex, colIndex)) {
                 continue;                
             }
 
@@ -49,3 +55,7 @@ class Generator {
         
     }
 }
+
+const generator = new Generator();
+generator.generate()
+console.log(generator.matrix)
