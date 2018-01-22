@@ -59,6 +59,30 @@ body{
             &:last-child{
                 border-right-width: 2px;
             }
+            &.empty{
+                color: white;
+            }
+            &.fixed{
+                background: #eee;
+            }
+            &.mark1{
+                background: lightblue;
+                &.empty{
+                    color: lightblue;
+                }
+            }
+            &.mark2{
+                background: lightgreen;
+                &.empty{
+                    color: lightgreen;
+                }
+            }
+            &.error{
+                background: lightpink;
+                &.empty{
+                    color: lightpink;
+                }
+            }
         }
 
         // 'col_g_left', 'col_g_center', 'col_g_right'
@@ -79,6 +103,18 @@ body{
                 border-bottom-width: 2px;
             }
         }
+    }
+}
+
+@pupupCellSize: 40px;
+.popup-num{
+    .container();
+    position: absolute;
+    padding-left: 0;
+    .row >span{
+        width: @pupupCellSize;
+        height: @pupupCellSize;
+        line-height: @pupupCellSize;
     }
 }
 

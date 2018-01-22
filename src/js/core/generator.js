@@ -4,6 +4,13 @@ const Toolkit = require('./toolkit');
 class Generator {
 
     generate () {
+        while (!this.intermalGenerate()) {
+            // to
+            console.warn('try again');
+        }
+    }
+
+    intermalGenerate () {
 
         this.matrix = Toolkit.matrix.makeMatrix();
         this.orders = Toolkit.matrix.makeMatrix()
@@ -11,13 +18,16 @@ class Generator {
             .map(row => Toolkit.matrix.shuffle(row));
 
         for (let n = 1; n <= 9; n++) {
-            this.fillNumber(n);
+            if (!this.fillNumber(n)) {
+                return false;
+            }
         }
+        return true;
 
     }
 
     fillNumber (n) {
-        this.fillRow(n, 0);
+        return this.fillRow(n, 0);
     }
 
     fillRow (n, rowIndex) {
@@ -28,8 +38,7 @@ class Generator {
         const row = this.matrix[rowIndex];
         // 随机选着列
         const orders = this.orders[rowIndex];
-        debugger;
-        for (let i; i < 9; i++) {
+        for (let i = 0; i < 9; i++) {
             const colIndex = orders[i];
             // 如果这个位置已经有值，跳过
             if (row[colIndex]) {
@@ -56,6 +65,7 @@ class Generator {
     }
 }
 
-const generator = new Generator();
-generator.generate()
-console.log(generator.matrix)
+module.exports = Generator;
+// const generator = new Generator();
+// generator.generate()
+// console.log(generator.matrix)
