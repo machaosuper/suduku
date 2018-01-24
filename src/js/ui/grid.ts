@@ -1,11 +1,19 @@
 // 生成九宫格
 
-const Toolkit = require('../core/toolkit');
-const Generator = require('../core/generator');
-const Sudoku = require('../core/sudoku');
-const Checker = require('../core/checker');
+// const Toolkit = require('../core/toolkit');
+// const Generator = require('../core/generator');
+// const Sudoku = require('../core/sudoku');
+// const Checker = require('../core/checker');
+
+// import Toolkit from '../core/toolkit';
+import Generator from '../core/generator';
+import Sudoku from '../core/sudoku';
+import Checker from '../core/checker';
 
 class Grid {
+
+    private _$container;
+
     constructor (container) {
         this._$container = container;
     }
@@ -46,7 +54,7 @@ class Grid {
     }
 
     layout () {
-        const width = $('span:first', this._$container).width();
+        const width: any = $('span:first', this._$container).width();
         $('span', this._$container)
             .height(width)
             .css({
@@ -118,4 +126,5 @@ class Grid {
     }
 }
 
-module.exports = Grid;
+export { Grid };
+export default Grid;

@@ -1,6 +1,10 @@
 // 处理弹出面板
 
-module.exports = class PopupNumbers {
+export class PopupNumbers {
+
+    private _$panel;
+    private _$targetCell;
+
     constructor ($panel) {
         this._$panel = $panel.hide().removeClass('hidden');
         this._$panel.on('click', 'span', e => {
@@ -52,3 +56,5 @@ module.exports = class PopupNumbers {
         this._$panel.hide();
     }
 };
+
+export default PopupNumbers;

@@ -32,13 +32,18 @@ function checkArray (array) {
 
 
 
-const Toolkit = require('./toolkit');
+// const Toolkit = require('./toolkit');
+import Toolkit from './toolkit';
 
 
 // 输入：matrix，用户完成数独数据，9X9
 // 处理：对matrix 行、列、宫进行检查， 并填写marks
 // 输出：检查是否成功、marks
 class Checker {
+
+    private _matrix;
+    private _matrixMarks;
+    private _success: boolean = false;
     constructor (matrix) {
         this._matrix = matrix;
         this._matrixMarks = Toolkit.matrix.makeMatrix(true);
@@ -78,7 +83,7 @@ class Checker {
 
     checkCols () {
         for (let colIndex = 0; colIndex < 9; colIndex++) {
-            const col = [];
+            const col: number[] = [];
             for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
                 col[rowIndex] = this._matrix[rowIndex][colIndex];
                 
@@ -109,7 +114,7 @@ class Checker {
     }
 
 }
- module.exports = Checker;
+export default Checker;
 
 // const Generator = require('./generator');
 // const generator = new Generator();

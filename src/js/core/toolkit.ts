@@ -4,13 +4,13 @@
  */
 
 const matrixToolkit = {
-    makeRow (v = 0) {
-        const array = new Array(9);
+    makeRow (v: any = 0) {
+        const array: Array<number> = new Array(9);
         array.fill(v);
         return array;
     },
     
-    makeMatrix (v = 0) {
+    makeMatrix (v: any = 0) {
         // const array = new Array(9);
         // array.fill(makeRow(v));
         // return array;
@@ -76,7 +76,7 @@ const boxTookit = {
     getBoxCells (matrix, boxIndex) {
         const startRowIndex = Math.floor(boxIndex / 3) * 3;
         const startColIndex = boxIndex % 3 * 3;
-        const result = [];
+        const result: number[] = [];
         for (let cellIndex = 0; cellIndex < 9; cellIndex++) {
             const rowIndex = startRowIndex + Math.floor(cellIndex / 3);
             const colIndex = startColIndex + cellIndex % 3;
@@ -87,7 +87,7 @@ const boxTookit = {
 };
 
 // 工具集
-module.exports  = class Toolkit {
+export class Toolkit {
     /**
      * 矩阵和数组相关工具
      */
@@ -102,3 +102,5 @@ module.exports  = class Toolkit {
         return boxTookit;
     }
 }
+
+export default Toolkit;

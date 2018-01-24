@@ -1,7 +1,11 @@
 // 生成数组解决方案
-const Toolkit = require('./toolkit');
+import Toolkit from './toolkit';
+// const Toolkit = require('./toolkit');
 
 class Generator {
+
+    matrix;
+    private orders;
 
     generate () {
         while (!this.intermalGenerate()) {
@@ -65,7 +69,7 @@ class Generator {
     }
 }
 
-module.exports = Generator;
+export default Generator;
 // const generator = new Generator();
 // generator.generate()
 // console.log(generator.matrix)
