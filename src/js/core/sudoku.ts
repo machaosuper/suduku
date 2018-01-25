@@ -8,8 +8,8 @@ import Generator from './generator';
 
 
 export default class Sudoku {
-    solutionMatrix;
-    puzzleMatrix;
+    solutionMatrix: number[][];
+    puzzleMatrix: number[][];
 
     constructor () {
         // 生成完成的解决方案
@@ -18,7 +18,7 @@ export default class Sudoku {
         this.solutionMatrix = generator.matrix;
     }
 
-    make (level = 5) {
+    make (level: number = 5) {
         // const shouldRid = Math.random() * 9 < level;
         // 生成迷盘
         this.puzzleMatrix = this.solutionMatrix.map(row => row.map(cell => {

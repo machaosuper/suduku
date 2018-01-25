@@ -4,17 +4,17 @@ import Toolkit from './toolkit';
 
 class Generator {
 
-    matrix;
-    private orders;
+    matrix: number[][];
+    orders: number[][];
 
-    generate () {
+    generate (): void {
         while (!this.intermalGenerate()) {
             // to
             console.warn('try again');
         }
     }
 
-    intermalGenerate () {
+    intermalGenerate (): boolean {
 
         this.matrix = Toolkit.matrix.makeMatrix();
         this.orders = Toolkit.matrix.makeMatrix()
@@ -30,11 +30,11 @@ class Generator {
 
     }
 
-    fillNumber (n) {
+     private fillNumber (n: number): boolean {
         return this.fillRow(n, 0);
     }
 
-    fillRow (n, rowIndex) {
+    private fillRow (n: number, rowIndex: number): boolean {
         if (rowIndex > 8) {
             return true;
         }
