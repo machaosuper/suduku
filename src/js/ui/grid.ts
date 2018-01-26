@@ -9,12 +9,14 @@
 import Generator from '../core/generator';
 import Sudoku from '../core/sudoku';
 import Checker from '../core/checker';
+import PopupNumbers from './popupnumbers'
+
 
 class Grid {
 
-    private _$container;
+    private _$container: JQuery;
 
-    constructor (container) {
+    constructor (container: JQuery) {
         this._$container = container;
     }
 
@@ -63,7 +65,7 @@ class Grid {
             });
     }
 
-    bindPopup (popupNumbers) {
+    bindPopup (popupNumbers: PopupNumbers) {
         this._$container.on('click', 'span', e => {
             const $cell = $(e.target);
             if ($cell.is('.fixed')) {
@@ -87,11 +89,13 @@ class Grid {
      */
     check () {
         // 获取需要检测的数据
-        const data = this._$container.children().map((rowIndex, div) => {
-            return $(div).children().map((colIndex, span) => parseInt($(span).text()) || 0);
-        })
-        .toArray()
-        .map($data => $data.toArray());
+        const data: number[][] = this._$container.children()
+            .toArray()
+            .map((div: HTMLElement): number[] => {
+                return $(div).children()
+                .toArray()
+                .map((span) => parseInt($(span).text(), 10) || 0);
+            })
         const checker = new Checker(data);
         if (checker.check()) {
             return true;
